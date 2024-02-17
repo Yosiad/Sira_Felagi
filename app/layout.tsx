@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Raleway } from "next/font/google";
 import "./globals.css";
 import Navbar from "./shared/Navbar";
+import { EdgeStoreProvider } from '../lib/edgestore';
+
 
 const raleway = Raleway({ subsets: ["latin"],
 weight:['200','300','400','500','600','700','900'] });
@@ -19,8 +21,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={raleway.className}>
+        <EdgeStoreProvider>
         <Navbar />
-        {children}</body>
+        {children}
+        </EdgeStoreProvider>
+        </body>
     </html>
   );
 }
